@@ -1,0 +1,48 @@
+
+frá notanda:
+	selectedProduct = 'Cigarettes'
+	comparedCity = 'Berlin, Germany'
+	selectedPercentage = "20"
+	selectedMaxPrice = "1"
+	selectedIndex = '"Cost of Living Index"'
+	
+til að bera saman við compardCity þarf að ná í gögn:
+
+priceInComparedCity = "SELECT " + selectedProduct + " FROM Prices WHERE City = '" + beforeComma(comparedCity) + "'"
+	
+indexInComparedCity = "SELECT " + selectedIndex + " FROM CostOfLivingIndex" + " WHERE City = " + '"' + comparedCity + '"'
+
+
+		Prices
+			at least 1% less expensive than ___			
+			
+				 cheaperCities = "SELECT City FROM CostOfLivingIndex WHERE " + selectedIndex + " < (1-0.01*" + selectedPercentage + ")*" + resultið úr indexInComparedCity queryinu
+			
+			price of beer in restaurant less than €2
+			price of meal less than €10
+			
+				cheaperProductCities = "SELECT City FROM Prices WHERE " + selectedProduct + " < " + selectedMaxPrice
+			
+			
+			price of meal at least 1% cheaper than in New York 
+
+				cheaperThanProductCities = "SELECT City FROM Prices WHERE " + selectedProduct + " < (1-0.01*" + selectedPercentage + ")*" + resultið úr priceInComparedCity queryinu
+			
+			flight from kef to ___ less than €300
+			
+		Weather
+			
+			temperature
+				between low and hi
+			sunshine 
+				avg hours per day 
+				probability of sunny day
+				hrs of daylight (sunrise sunset) 
+			cloudy
+				probability of cloudy day
+			rain
+				probability of rainy day
+				(almost) no rain / a little is ok / don't care 
+			windy
+				no wind / a little is ok / don't care 
+			housr of daylight 
